@@ -41,15 +41,17 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Color.fromARGB(255, 183, 218, 218),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 20),
+          padding: EdgeInsets.only(
+            left: 20,
+          ),
           child: NestedScrollView(
             physics: NeverScrollableScrollPhysics(),
             headerSliverBuilder: (context, isScrolled) {
               return [
                 SliverAppBar(
                   backgroundColor: Color.fromARGB(0, 255, 255, 255),
-                  collapsedHeight: 400,
-                  expandedHeight: 400,
+                  collapsedHeight: 380,
+                  expandedHeight: 380,
                   flexibleSpace: BeforeGridItem(),
                 ),
               ];
@@ -59,46 +61,53 @@ class _HomeScreenState extends State<HomeScreen> {
                 right: 20,
               ),
               child: Container(
-                height: 600,
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 40,
-                    crossAxisSpacing: 10,
-                  ),
-                  itemCount: _items.length,
-                  itemBuilder: (_, index) => Container(
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Positioned(
-                          top: -30,
-                          left: 23,
-                          child: Container(
-                            child: Image.asset(
-                              _items[index]['image'],
-                              // height: 100,
-                            ),
-                            height: 110,
-                            width: 110,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: Color.fromARGB(255, 255, 190, 185),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 15,
-                          top: 100,
-                          child: Text(
-                            _items[index]['name'],
-                          ),
-                        ),
-                      ],
+                // padding: EdgeInsets.only(top: 40),
+                color: Color.fromARGB(0, 255, 193, 7),
+                height: 700,
+                child: Center(
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 40,
+                      crossAxisSpacing: 10,
                     ),
-                    decoration: BoxDecoration(
+                    itemCount: _items.length,
+                    itemBuilder: (_, index) => Container(
+                      // margin: EdgeInsets.only(top: 30),
+                      height: 200,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            top: -32,
+                            left: 23,
+                            child: Container(
+                              child: Image.asset(
+                                _items[index]['image'],
+                                // height: 100,
+                              ),
+                              height: 110,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: Color.fromARGB(255, 255, 190, 185),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            left: 15,
+                            top: 100,
+                            child: Text(
+                              _items[index]['name'],
+                            ),
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -262,6 +271,9 @@ class _BeforeGridItemState extends State<BeforeGridItem> {
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
+                SizedBox(
+                  width: 15,
+                ),
               ],
             ),
           ),
@@ -309,9 +321,6 @@ class _BeforeGridItemState extends State<BeforeGridItem> {
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 15,
         ),
       ],
     );
